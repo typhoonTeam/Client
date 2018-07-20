@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 public class JsonOutUtil {
     private static JsonParse json = new JsonParseByJackson();
     public static void outJson(HttpServletRequest request, HttpServletResponse response, Object object){
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("application/json;charset=UTF-8");
         //禁用缓存，确保网页信息是最新数据
         response.setHeader("Pragma","No-cache");
         response.setHeader("Cache-Control","no-cache");
