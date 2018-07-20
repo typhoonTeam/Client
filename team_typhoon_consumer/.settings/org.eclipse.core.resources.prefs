@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/main/java/typhoon/consuemer/pojo/Advertisement.java=UTF-8
+encoding//src/main/java/typhoon/consuemer/pojo/HttpReq.java=UTF-8
+encoding//src/main/java/typhoon/consuemer/servlet/ShowRestaurantsServlet.java=UTF-8
+encoding//src/main/java/typhoon/consuemer/util/HttpUtil.java=UTF-8
+encoding//src/test/java/team_typhoon_consumer/testdaoimp/TestAdDaoImpl.java=UTF-8
+encoding//src/test/java/team_typhoon_consumer/testdaoimp/TestFoodDaoImpl.java=UTF-8
+encoding//src/test/java/team_typhoon_consumer/testdaoimp/TestRestaurantDaoImp.java=UTF-8
