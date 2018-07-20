@@ -17,6 +17,7 @@ import typhoon.consuemer.manager.impl.HttpManagerImpl;
 import typhoon.consuemer.pojo.Advertisement;
 import typhoon.consuemer.pojo.Food;
 import typhoon.consuemer.pojo.HttpReq;
+import typhoon.consuemer.pojo.Page;
 import typhoon.consuemer.pojo.Restaurant;
 import typhoon.consuemer.service.AdverstimentService;
 import typhoon.consuemer.service.RestaurantService;
@@ -27,19 +28,18 @@ import typhoon.consuemer.util.JsonOutUtil;
 /**
  * 
  * @author Carrie
- *
+ *update dunn 2018-7-20
  */
 public class ShowRestaurantsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	RestaurantService rServiceImpl = RestaurantServiceImpl.getInstance();
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		System.out.println(this.getServletConfig().getServletContext().getRealPath("/"));	
-		List<Restaurant> restaurants = rServiceImpl.getResaurant();
-		if(restaurants!=null && restaurants.size()>0) {
-			JsonOutUtil.outJson(request,response,restaurants);
-		}		
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		int currentPage = Integer.parseInt(req.getParameter("currentPage"));
+		int pageSize = Integer.parseInt(req.getParameter("pageSize"));
+		Page<Restaurant> restaurants = rServiceImpl.getResaurant(currentPage,pageSize);
+		JsonOutUtil.outJson(req,resp,restaurants);
 	}
-
-	
 
 }

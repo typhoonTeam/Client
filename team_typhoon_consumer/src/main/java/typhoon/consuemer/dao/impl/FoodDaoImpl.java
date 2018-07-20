@@ -105,4 +105,62 @@ public class FoodDaoImpl implements FoodDao {
 		return num;
 	}
 
+	@Override
+	public List<Food> getFoodsByRestaurantId(String restaurantId, int start, int end) {
+		// TODO Auto-generated method stub
+		conn = DBUtil.getConnection();
+		String sql = "SELECT * FROM  (  SELECT A.*, ROWNUM RN  FROM (SELECT * FROM FOOD) A  WHERE ROWNUM <= ?  )  WHERE RN >= ? AND SHOP_ID=?";
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		List<Food> foods = new ArrayList<Food>();
+		try {
+			pre = conn.prepareStatement(sql);
+			pre.setString(3, restaurantId);
+			pre.setInt(1, end);
+			pre.setInt(2, start);
+			rs = pre.executeQuery();
+			while(rs.next()) {
+				Food food = new Food();
+				food.setId(rs.getInt("ID"));
+				food.setFoodName(rs.getString("FOOD_NAME"));
+				food.setPrice(rs.getString("PRICE"));
+				food.setPicture(rs.getString("PICTURE"));
+				food.setShopId(rs.getString("SHOP_ID"));
+				food.setInfo(rs.getString("INFO"));
+				food.setStatus(rs.getInt("STATUS"));
+				foods.add(food);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBUtil.close(conn, pre, rs);
+		}
+		return foods;
+	}
+
+	@Override
+	public int foodCountByRestaurantId(String restaurantId) {
+		// TODO Auto-generated method stub
+		conn = DBUtil.getConnection();
+		String sql = "Select count(1) FROM Food where SHOP_ID=?";
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		int result = 0;
+		List<Food> foods = new ArrayList<Food>();
+		try {
+			pre = conn.prepareStatement(sql);
+			pre.setString(1, restaurantId);
+			rs = pre.executeQuery();
+			rs.next();
+			result =rs.getInt(1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBUtil.close(conn, pre, rs);
+		}
+		return result;
+	}
+
 }

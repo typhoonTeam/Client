@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import typhoon.consuemer.pojo.Page;
 import typhoon.consuemer.pojo.Restaurant;
 import typhoon.consuemer.service.RestaurantService;
 import typhoon.consuemer.service.impl.RestaurantServiceImpl;
@@ -37,5 +38,11 @@ public class TestRestaurantsService {
 		List<Restaurant> restaurant = res.getResturantByfuzzyName("na");
 		System.out.println(restaurant.size());
 		assert(restaurant.size()>=1);
+	}
+	@Test
+	public void testGetRestaurantPage() {
+		Page<Restaurant> restaurant = res.getResaurant(0, 5);
+		System.out.println(restaurant.getTotalCount());
+		assert(restaurant.getTotalCount()>=1);
 	}
 }

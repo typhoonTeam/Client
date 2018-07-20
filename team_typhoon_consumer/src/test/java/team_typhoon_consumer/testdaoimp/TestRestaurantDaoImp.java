@@ -52,4 +52,14 @@ public class TestRestaurantDaoImp {
   		 System.out.println(resList.getShopName());
   		assert(resList.getShopId()==null);
     }
+    @Test
+    public void testGetRestaurantPage() throws Exception{
+    	List<Restaurant> resList = dao.getResaurant(0, 1);
+    	assert(resList.size()>0);
+    }
+    @Test
+    public void testGetRestaurantCount() throws Exception{
+    	int resList = dao.getRestaurantCount();
+    	assert(resList>0);
+    }
 }

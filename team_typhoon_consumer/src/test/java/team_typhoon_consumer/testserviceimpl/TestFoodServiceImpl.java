@@ -9,6 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import typhoon.consuemer.pojo.Food;
+import typhoon.consuemer.pojo.Page;
 import typhoon.consuemer.service.FoodService;
 import typhoon.consuemer.service.impl.FoodServiceImpl;
 /**
@@ -32,5 +33,11 @@ public class TestFoodServiceImpl {
 	public void testGetFoodByRestaurantID() throws Exception {
 		List<Food> foods = foodService.getFoodsByRestaurantId("1");
 		assert(foods.size()>=1);
+	}
+	
+	@Test
+	public void testGetFoodPage() throws Exception {
+		Page<Food> foods = foodService.getFoodsByRestaurantId("5243d4b6ac14461bb00c781f82e6ce91", 0, 1);
+		assert(foods.getTotalCount()>=1);
 	}
 }

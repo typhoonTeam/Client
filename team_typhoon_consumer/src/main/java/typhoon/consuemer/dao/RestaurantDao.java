@@ -26,4 +26,12 @@ public interface RestaurantDao {
 	 * @return restaurant object
 	 */
 	public Restaurant getRestaurantById(String resturantId);
+	/**
+	 * 分页查询
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	public List<Restaurant> getResaurant(int start,int end);
+	public int getRestaurantCount();
 }

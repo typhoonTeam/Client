@@ -32,7 +32,7 @@ public class TestFoodDaoImpl {
 		food.setInfo("asdasdasdasd");
 		food.setPrice("12");
 		food.setPicture("asdsd");
-		food.setShopId("683a2c14a4914bbaa2ab67473be29902");
+		food.setShopId("5243d4b6ac14461bb00c781f82e6ce91");
 		food.setStatus(0);
 		int result = foodDao.addFood(food);
 		assert(result>0);
@@ -42,8 +42,25 @@ public class TestFoodDaoImpl {
 	public void getFoodsByResturantId() throws Exception {
 		
 		//input a exit restaurantId
-		List<Food> foods = foodDao.getFoodsByRestaurantId("683a2c14a4914bbaa2ab67473be29902");	
+		List<Food> foods = foodDao.getFoodsByRestaurantId("5243d4b6ac14461bb00c781f82e6ce91");	
 		System.out.println(foods.size());
 		assertTrue(foods.size()!=0);
+	}
+	
+	@Test
+	public void getFoodsByResturantIdPage() throws Exception {
+		
+		//input a exit restaurantId
+		List<Food> foods = foodDao.getFoodsByRestaurantId("5243d4b6ac14461bb00c781f82e6ce91",1,1);	
+		System.out.println(foods.size());
+		assertTrue(foods.size()!=0);
+	}
+	
+	@Test
+	public void getFoodCount() throws Exception {
+		
+		//input a exit restaurantId
+		int result = foodDao.foodCountByRestaurantId("5243d4b6ac14461bb00c781f82e6ce91");	
+		assertTrue(result>0);
 	}
 }

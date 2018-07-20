@@ -2,6 +2,7 @@ package typhoon.consuemer.service;
 
 import java.util.List;
 
+import typhoon.consuemer.pojo.Page;
 import typhoon.consuemer.pojo.RegisterInfo;
 import typhoon.consuemer.pojo.Restaurant;
 /**
@@ -27,6 +28,9 @@ public interface RestaurantService {
 	 * @return restaurant object
 	 */
 	public Restaurant getRestaurant(String resturantId);
-	
-
+	/**
+	 * 分页
+	 * @return
+	 */
+	public Page<Restaurant> getResaurant(int currentPage,int pageSize);
 }

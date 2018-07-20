@@ -11,6 +11,7 @@ import java.util.List;
 import javax.naming.spi.DirStateFactory.Result;
 
 import typhoon.consuemer.dao.RestaurantDao;
+import typhoon.consuemer.pojo.Food;
 import typhoon.consuemer.pojo.Restaurant;
 import typhoon.consuemer.util.DBUtil;
 /**
@@ -117,4 +118,60 @@ public class ResurantDaoImpl implements RestaurantDao{
 		restaurant.setStatus(1);
 		restaurantsList.add(restaurant);
 	}
+
+
+
+
+	@Override
+	public List<Restaurant> getResaurant(int start, int end) {
+		// TODO Auto-generated method stub
+				conn = DBUtil.getConnection();
+		String sql = "select rs.SHOP_NAME,r.SHOP_ID,r.CLOSE_TIME,r.OPEN_TIME,r.DELIVERY, r.DELI_FEE,r.PICTURE,r.SLOGAN,r.STATUS,r.COMMENTS from (  SELECT A.*, ROWNUM RN  FROM (SELECT * FROM RESTAURANT) A  WHERE ROWNUM <= ?  )  r left JOIN REGISTERINFO rs on r.SHOP_ID = rs.SHOP_ID where status = 0 and RN >= ? ";
+		PreparedStatement preparedStatement  = null;
+		ResultSet resultSet = null;
+		List<Restaurant> restaurantsList = new ArrayList<Restaurant>();
+		try {
+			preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setInt(1, end);
+			preparedStatement.setInt(2, start);
+			resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				setRestaurant(resultSet, restaurantsList);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBUtil.close(conn, preparedStatement, resultSet);
+		}
+
+		return restaurantsList;
+	}
+
+
+
+
+	@Override
+	public int getRestaurantCount() {
+		// TODO Auto-generated method stub
+		conn = DBUtil.getConnection();
+		String sql = "Select count(1) FROM RESTAURANT";
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		int result = 0;
+		List<Food> foods = new ArrayList<Food>();
+		try {
+			pre = conn.prepareStatement(sql);
+			rs = pre.executeQuery();
+			rs.next();
+			result =rs.getInt(1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBUtil.close(conn, pre, rs);
+		}
+		return result;
+	}
+	
 }
