@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import typhoon.consuemer.pojo.Food;
 import typhoon.consuemer.service.impl.FoodServiceImpl;
-import typhoon.consuemer.util.JsonOut;
+import typhoon.consuemer.util.JsonOutUtil;
 
 /**
  * 
@@ -24,9 +24,9 @@ public class FoodDetailServlet extends HttpServlet {
 		 String foodId = (String)request.getParameter("food_id");
 		 if(foodId!=null) {
 			 Food food = foodServiceImpl.getFoodInfoByFoodId(foodId);
-			 JsonOut.outJson(request,response,food);
+			 JsonOutUtil.outJson(request,response,food);
 		 }else {
-			 JsonOut.outJson(request,response,"");
+			 JsonOutUtil.outJson(request,response,"");
 		 }
 	}
 

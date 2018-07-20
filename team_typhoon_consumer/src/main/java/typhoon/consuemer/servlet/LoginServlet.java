@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import typhoon.consuemer.pojo.User;
 import typhoon.consuemer.service.UserService;
 import typhoon.consuemer.service.impl.UserServiceImpl;
-import typhoon.consuemer.util.JsonOut;
+import typhoon.consuemer.util.JsonOutUtil;
 import typhoon.consuemer.util.MD5Util;
 /**
  * 
@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 		user.setPassword(password);
 		user.setUsername(username);
 		Integer result = userService.Login(user);
-		JsonOut.outJson(request,response,result);
+		JsonOutUtil.outJson(request,response,result);
 
 	}
 

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import typhoon.consuemer.pojo.User;
 import typhoon.consuemer.service.UserService;
 import typhoon.consuemer.service.impl.UserServiceImpl;
-import typhoon.consuemer.util.JsonOut;
+import typhoon.consuemer.util.JsonOutUtil;
 import typhoon.consuemer.util.JsonParse;
 import typhoon.consuemer.util.JsonParseByJackson;
 import typhoon.consuemer.util.MD5Util;
@@ -55,6 +55,6 @@ public class RegisterServlet extends HttpServlet {
 		user.setUsername(username);
 		Integer type = userService.regist(user);
 		//返回>0则代表注册成功
-		JsonOut.outJson(request,response,type);
+		JsonOutUtil.outJson(request,response,type);
 	}
 }

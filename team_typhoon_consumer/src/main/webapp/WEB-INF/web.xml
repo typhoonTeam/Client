@@ -48,6 +48,12 @@
 		<description></description>
 		<servlet-class>typhoon.consuemer.servlet.FileUploaddd</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>AdvertismentServlet</servlet-name>
+		<display-name>AdvertismentServlet</display-name>
+		<description></description>
+		<servlet-class>typhoon.consuemer.servlet.AdvertismentServlet</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name>
@@ -78,5 +84,9 @@
 	<servlet-mapping>
 		<servlet-name>FileUpload</servlet-name>
 		<url-pattern>/FileUpload</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AdvertismentServlet</servlet-name>
+		<url-pattern>/getAdvertisement</url-pattern>
 	</servlet-mapping>
 </web-app>

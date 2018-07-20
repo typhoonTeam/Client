@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import typhoon.consuemer.pojo.Restaurant;
 import typhoon.consuemer.service.impl.RestaurantServiceImpl;
-import typhoon.consuemer.util.JsonOut;
+import typhoon.consuemer.util.JsonOutUtil;
 
 /**
  * 
@@ -21,12 +21,12 @@ public class RestaurantDetailServlet extends HttpServlet {
 	RestaurantServiceImpl restaurantServiceImpl =  RestaurantServiceImpl.getInstance();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String shopId = (String) request.getSession().getAttribute("shop_id");
+		String shopId = (String) request.getParameter("shop_id");
 		if(shopId!=null) {
 			Restaurant restaurant = restaurantServiceImpl.getRestaurant(shopId);
-			JsonOut.outJson(request,response,restaurant);
+			JsonOutUtil.outJson(request,response,restaurant);
 		}else {
-			JsonOut.outJson(request, response, "{}");
+			JsonOutUtil.outJson(request, response, "{}");
 		}
 	}
 
