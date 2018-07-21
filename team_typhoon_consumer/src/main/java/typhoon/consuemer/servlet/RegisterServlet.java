@@ -1,6 +1,8 @@
 package typhoon.consuemer.servlet;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.UUID;
 
@@ -22,7 +24,7 @@ import typhoon.consuemer.util.MD5Util;
  *
  */
 public class RegisterServlet extends HttpServlet {
-	private static JsonParse<User> json = new JsonParseByJackson<>();
+	private static JsonParse<User> jsonParse = new JsonParseByJackson<>();
 	private static final long serialVersionUID = 1L;
 	private static UserService userService = UserServiceImpl.getInstance();   
 	/**
@@ -46,13 +48,11 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String username = request.getParameter("username");
-		String password = MD5Util.md5Password(request.getParameter("password"));
+		BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
+		String temp = br.readLine();
+		User user = jsonParse.parseJsonToObject(User.class, temp);
 		String userId = UUID.randomUUID().toString();
-		User user = new User();
-		user.setPassword(password);
 		user.setUserId(userId);
-		user.setUsername(username);
 		Integer type = userService.regist(user);
 		//返回>0则代表注册成功
 		JsonOutUtil.outJson(request,response,type);

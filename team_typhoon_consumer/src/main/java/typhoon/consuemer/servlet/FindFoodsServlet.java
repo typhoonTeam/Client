@@ -24,7 +24,7 @@ public class FindFoodsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;   
 	FoodServiceImpl fServiceImpl =  FoodServiceImpl.getInstance();
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String shop_id = request.getParameter("shop_id");
 		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
