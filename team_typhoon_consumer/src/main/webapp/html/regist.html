@@ -4,49 +4,30 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/login.css">
     <script src="../node_modules/jquery/dist/jquery.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
      <script src="../js/regist.js"></script>
     <style>
-        body{
-            background-color: #ff7d52;
-        }
-        .body{
-            width: 1000px;
-            height: 1200px;
-            margin: 0px auto;
-            background-color: white;
-        }
-        #header{
-            width: 500px;
-            background-color: gold;
-            border: 3px solid gold;
-
-        }
         .login {
-            width: 300px;
-            height: 400px;
-            margin: 0px auto;
+            width: 380px;
+            height: 350px;
+            margin: -25px 130px;
             border: 2px solid gold;
             border-radius:25px;
-        }
-        .form_style{
-            width: 200px;
-            margin: 20px auto;
-            color: #d58512;
-
+            background-color: white;
         }
 
     </style>
 
 </head>
 <body>
-<div class="body">
+<div class="carrie_body">
     <br>
-    <div id="header">
+    <div id="carrie_header">
         <ul class="nav nav-tabs nav-justified">
             <li><a href="##">主页</a></li>
-            <li class="active"><a href="##">登录</a></li>
+            <li><a href="##">登录</a></li>
             <li><a href="##">购物车</a></li>
             <li><a href="##">订单</a></li>
             <li><a href="##">我的</a></li>
@@ -64,18 +45,23 @@
                 <form id="registForm">
                     <div class="form-group">
                         <label for="username">用户名</label>
-                        <input type="text" class="form-control" id="username" placeholder="Name" name="name">
-                    </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                            <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                        </div>                    </div>
                     <div class="form-group">
                         <label for="password">密码</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password" name="password">
-                    </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                            <input type="text" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
+                        </div>                      </div>
                     <div class="form-group">
                         <label for="password1">确认密码</label>
-                        <input type="password" class="form-control" id="password1" placeholder="Password" name="repassword">
-                    </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                            <input type="text" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
+                        </div>                      </div>
                     <button type="submit" class="btn btn-default">注册</button>
-                    <button type="button" onclick="javascrtpt:window.location.href='login.html'">登录</button><br/>
                        <span id="error"></span>
                 </form>
             </div>

@@ -3,6 +3,17 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
+	<filter>
+		<filter-name>DomainFilter</filter-name>
+		<display-name>DomainFilter</display-name>
+		<description></description>
+		<filter-class>typhoon.consuemer.filter.DomainFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>DomainFilter</filter-name>
+		<url-pattern>/DomainFilter</url-pattern>
+	</filter-mapping>
+	
 	<listener>
 		<listener-class>typhoon.consuemer.listener.SessionListener</listener-class>
 	</listener>

@@ -1,0 +1,15 @@
+
+.carrie_body{
+    width: 1000px;
+    height: 1200px;
+    margin: 0px auto;
+    background-color: white;
+}
+#carrie_header{
+    width: 500px;
+    /*padding-left: 15px;*/
+    background-color: gold;
+    border: 3px solid gold;
+    margin: 10px 15px;
+
+}

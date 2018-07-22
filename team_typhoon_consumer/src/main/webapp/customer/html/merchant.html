@@ -111,7 +111,64 @@
 
         <div id="merchants">
             <div class="row">
-               
+                <div class="col-md-3">
+                    <div id="merchant">
+                        <br>
+                        <br>
+                        <div class="merchantImg">
+                            <img src="../image/1.jpg" alt="" width="180" height="100">
+                        </div>
+                        <br>
+                        <div class="merchantDetail">
+                            &nbsp;&nbsp;沙拉店<br>
+                            &nbsp;&nbsp;美味好吃<br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div id="merchant">
+                        <br>
+                        <br>
+                        <div class="merchantImg">
+                            <img src="../image/1.jpg" alt="" width="180" height="100">
+                        </div>
+                        <br>
+                        <div class="merchantDetail">
+                            &nbsp;&nbsp;沙拉店<br>
+                            &nbsp;&nbsp;美味好吃<br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div id="merchant">
+                        <br>
+                        <br>
+                        <div class="merchantImg">
+                            <img src="../image/1.jpg" alt="" width="180" height="100">
+                        </div>
+                        <br>
+                        <div class="merchantDetail">
+                            &nbsp;&nbsp;沙拉店<br>
+                            &nbsp;&nbsp;美味好吃<br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div id="merchant">
+                        <br>
+                        <br>
+                        <div class="merchantImg">
+                            <img src="../image/1.jpg" alt="" width="180" height="100">
+                        </div>
+                        <br>
+                        <div class="merchantDetail">
+                            &nbsp;
+                            &nbsp;沙拉店<br>
+
+                            &nbsp;&nbsp;美味好吃<br>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -120,38 +177,55 @@
 </div>
 </body>
 <script>
-let currentPage = 0;
-let pageSize = 8;
-window.onload=function () {
-    let url="http://localhost:8081/typhoon_consuemer/showRestaurants";
-    let method="POST";
-    let headers=[{"key":"Content-Type","value":"application/json"}];
-    function renderTable(merchants) {
-        let maindiv=document.querySelector("#merchants");
-        for(let i=0;i<merchants.length;i++){
-        	
-            let colDiv='<a href="/typhoon_consuemer/customer/html/merchantFood.html?shop_id='+merchants[i].shopId+'"><div class="col-md-3"><div id="merchant"><br><br> <div class="merchantImg">' +
-                ' <img src="'+merchants[i].picture+'" alt="" width="180" height="100">' +
-                '</div><br><div class="merchantDetail">' +
-                ' &nbsp;&nbsp;'+merchants[i].shopName+'<br> &nbsp;&nbsp;'+merchants[i].slogan+'<br>' +
-                '</div></div></div></a>'
-            $("#merchants").append(colDiv);
-        }
-    }
-    function getData(method,url,data,headers){
-        $.ajax({
-            type: method,
-            url: url,
-            dataType:"json",
-            data: {currentPage:currentPage,
-                pageSize:pageSize},
-            success: function(data){
-                renderTable(data.dataList);
+    let currentPage = 0;
+    let pageSize = 8;
+    // $(function(){
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "http://localhost:8081/typhoon_consuemer/showRestaurants",
+    //         data: {currentPage:currentPage,
+    //             pageSize:pageSize},
+    //         dataType: "json",
+    //         success: function(data){
+    //             for(let i=0;i<data.dataList.length;i++){
+    //                 console.log(data.dataList[i]);
+    //             }
+    //         }
+    //     });
+    // });
+
+    window.onload=function () {
+        let url="http://localhost:8081/typhoon_consuemer/showRestaurants";
+        let method="POST";
+        let headers=[{"key":"Content-Type","value":"application/json"}];
+        function renderTable(merchants) {
+            let maindiv=document.querySelector("#merchants");
+            for(let i=0;i<merchants.length;i++){
+                let colDiv='<div class="col-md-3"><div id="merchant"><br><br> <div class="merchantImg">' +
+                    ' <img src="'+merchants[i].picture+'" alt="" width="180" height="100"></div><br><div class="merchantDetail">' +
+                    ' &nbsp;&nbsp;'+merchants[i].shopName+'<br> &nbsp;&nbsp;'+merchants[i].slogan+'<br></div></div></div>'
+               $("#merchants").append(colDiv);
             }
-        });
+        }
+        ///////////////////////////////////////////
+        function getData(method,url,data,headers){
+            $.ajax({
+                type: method,
+                url: url,
+                dataType:"json",
+                data: {currentPage:currentPage,
+                 pageSize:pageSize},
+                success: function(data){
+                    renderTable(data.dataList);
+                }
+            });
+        }
+        //////////////////////////////////////////
+
+        getData(method,url,null,headers);
+
+
     }
-    getData(method,url,null,headers);
-}
 
 </script>
 </html>
