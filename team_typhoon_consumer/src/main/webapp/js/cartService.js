@@ -52,6 +52,37 @@
             }
         }
     }
+    //reducecart
+    cartService.reduceCart = function updateCart(foodTemp) {
+        if (userId) {
+                let flag = -1;
+                for (let z = 0; z < foodsInCart.length; z++) {
+                    if (foodsInCart[z].id == foodTemp.id) {
+                        flag = z;
+                        break;
+                    }
+                }
+                if (flag != -1) {
+                	foodsInCart[flag].num = foodsInCart[flag].num-1;
+                    if(foodsInCart[flag].num==0)foodsInCart.splice(flag,1);
+                    $1.updateUserCart(userId,param, foodsInCart);
+                }
+        } else {
+                let flag = -1;
+                for (let z = 0; z < foodsInCart.length; z++) {
+                    if (foodsInCart[z].id == foodTemp.id) {
+                        flag = z;
+                        break;
+                    }
+                }
+                if (flag != -1) {
+                	foodsInCart[flag].num = foodsInCart[flag].num-1;
+                    if(foodsInCart[flag].num==0)foodsInCart.splice(flag,1);
+                    $1.updateCart(param, foodsInCart);
+                }
+           
+        }
+    }
 
     global.$cartservice=cartService;
 })(window);
