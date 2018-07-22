@@ -20,7 +20,7 @@ public class RestaurantDetailServlet extends HttpServlet {
 
 	RestaurantServiceImpl restaurantServiceImpl =  RestaurantServiceImpl.getInstance();
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String shopId = (String) request.getParameter("shop_id");
 		if(shopId!=null) {
 			Restaurant restaurant = restaurantServiceImpl.getRestaurant(shopId);
