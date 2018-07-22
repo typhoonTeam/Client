@@ -126,7 +126,7 @@ public class ResurantDaoImpl implements RestaurantDao{
 	public List<Restaurant> getResaurant(int start, int end) {
 		// TODO Auto-generated method stub
 				conn = DBUtil.getConnection();
-		String sql = "select rs.SHOP_NAME,r.SHOP_ID,r.CLOSE_TIME,r.OPEN_TIME,r.DELIVERY, r.DELI_FEE,r.PICTURE,r.SLOGAN,r.STATUS,r.COMMENTS from (  SELECT A.*, ROWNUM RN  FROM (SELECT * FROM RESTAURANT) A  WHERE ROWNUM <= ?  )  r left JOIN REGISTERINFO rs on r.SHOP_ID = rs.SHOP_ID where status = 0 and RN >= ? ";
+		String sql = "select rs.SHOP_NAME,r.SHOP_ID,r.CLOSE_TIME,r.OPEN_TIME,r.DELIVERY, r.DELI_FEE,r.PICTURE,r.SLOGAN,r.STATUS,r.COMMENTS from (  SELECT A.*, ROWNUM RN  FROM (SELECT * FROM RESTAURANT) A  WHERE ROWNUM <= ?  )  r left JOIN REGISTERINFO rs on r.SHOP_ID = rs.SHOP_ID where status = 0 and RN > ? ";
 		PreparedStatement preparedStatement  = null;
 		ResultSet resultSet = null;
 		List<Restaurant> restaurantsList = new ArrayList<Restaurant>();

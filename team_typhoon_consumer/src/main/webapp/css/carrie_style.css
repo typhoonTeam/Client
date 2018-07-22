@@ -3,9 +3,10 @@ body{
 }
 .carrie_body{
     width: 1000px;
-    height: 2000px;
-    margin: 0px auto;
-    background-color: white;
+    /*height: 2000px;*/
+    min-height: 880px;
+    margin: 10px auto;
+    background-color: #fff7d5;
 }
 #carrie_header{
     width: 500px;

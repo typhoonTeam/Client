@@ -16,17 +16,18 @@
             margin: 0px auto;
             /*background-color: gold;*/
             width: 200px;
-            height: 200px;
+            height: 240px;
 
         }
 
         .dishDetail {
-            margin-top: 15px;
-            margin-left: 0px;
+            font-size: 15px;
+            font-weight: 600;
+            color: gold;
         }
 
         .addBtn {
-            color: #b4aeb3;
+            color: red;
             left: 100px;
         }
 
@@ -38,13 +39,13 @@
         }
 
         .segmentation {
-            width: 610px;
+            width: 720px;
             height: 35px;
-            background-color: #ffd9d0;
+            background-color: #ffa252;
             font-size: 20px;
             text-align: center;
             margin-top: 20px;
-            /*margin-left: 7px;*/
+            margin-left: 10px;
         }
 
         .go-pay {
@@ -65,28 +66,8 @@
             right: 0px;
         }
 
-        .foodName{
-            /*4.22 14:00 新增*/
-            font-size: 15px;
-            font-weight: 600;
-            color: #0c0b0b;
-        }
-        .foodPri{
-            /*4.22 14:00 新增*/
-            font-size: 13px;
-            color: red;
-        }
 
-        #content{
-            width: 800px;
-            margin-left: 10px;
-        }
 
-        .paging_nav{
-            /*4.22 14:00 新增*/
-            margin-top: 50px;
-            margin-left: 30%;
-        }
 
     </style>
 
@@ -125,15 +106,6 @@
         </div>
 
 
-        <!-- 4.22 14:00 carrie修改-->
-        <div class="paging_nav">
-            <nav aria-label="...">
-                <ul class="pagination" id="navul">
-                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                    <li class="active"><a href="#">1 </a></li>
-                </ul>
-            </nav>
-        </div>
     </div>
 
     <div class="shopping-cart">
@@ -153,7 +125,13 @@
             </div>
         </div>
     </div>
-
+    <nav aria-label="...">
+        <ul class="pagination" id="navul">
+            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+            <li class="active"><a href="#">1 </a></li>
+            ...
+        </ul>
+    </nav>
 
 </div>
 </body>
@@ -196,8 +174,8 @@
                 }
                 let conDiv = '<div class="col-md-3"><div id="dish"><br><br><a href=""><div class="dishImg">';
                 let img = ' <img src="' + foods[i].picture + '" alt="" width="180" height="100"></a>';
-                let foodinfo = '<div class="dishDetail"><div class="foodName">' + foods[i].foodName + '</div><div class="foodPri">￥' + foods[i].price;
-                let spanButton = '<span class="addBtn glyphicon glyphicon-plus" id="' + foods[i].id + '"></span>'+'</div>'+'</div></div></div>'
+                let foodinfo = '<div class="dishDetail">' + foods[i].foodName + '<br>￥' + foods[i].price;
+                let spanButton = '<span class="addBtn glyphicon glyphicon-plus" id="' + foods[i].id + '"></span></div></div></div>'
                 $("#dishList").append(conDiv + img + foodinfo + spanButton);
                 if (i % 3 == 0) {
                     $("#dishList").append('</div>');

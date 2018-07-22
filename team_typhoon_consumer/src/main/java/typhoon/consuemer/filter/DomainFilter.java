@@ -7,6 +7,7 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletResponse;
 
 
 public class DomainFilter implements Filter {
@@ -29,9 +30,10 @@ public class DomainFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
 		// place your code here
 		// pass the request along the filter chain
+		HttpServletResponse httpResponse = (HttpServletResponse) response;
+		httpResponse.setHeader("Access-Control-Allow-Origin", "*");
 		chain.doFilter(request, response);
 	}
 

@@ -60,7 +60,7 @@ public class RestaurantServiceImpl implements RestaurantService{
 		page.setPageSize(pageSize);
 		page.setTotalCount(result);
 		page.setDataList(restaurants);
-		page.setTotalPage(result/pageSize);
+		page.setTotalPage((int)(Math.ceil((result+0.0)/pageSize)));
 		return page;		
 	}
 

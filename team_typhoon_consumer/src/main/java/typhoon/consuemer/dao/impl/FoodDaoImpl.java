@@ -109,7 +109,7 @@ public class FoodDaoImpl implements FoodDao {
 	public List<Food> getFoodsByRestaurantId(String restaurantId, int start, int end) {
 		// TODO Auto-generated method stub
 		conn = DBUtil.getConnection();
-		String sql = "SELECT * FROM  (  SELECT A.*, ROWNUM RN  FROM (SELECT * FROM FOOD) A  WHERE ROWNUM <= ?  )  WHERE RN >= ? AND SHOP_ID=?";
+		String sql = "SELECT * FROM  (  SELECT A.*, ROWNUM RN  FROM (SELECT * FROM FOOD) A  WHERE ROWNUM <= ?  )  WHERE RN > ? AND SHOP_ID=?";
 		PreparedStatement pre = null;
 		ResultSet rs = null;
 		List<Food> foods = new ArrayList<Food>();

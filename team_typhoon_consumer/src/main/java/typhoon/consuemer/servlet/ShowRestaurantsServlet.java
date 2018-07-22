@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import typhoon.consuemer.manager.HttpManager;
-import typhoon.consuemer.manager.JsonOutManager;
 import typhoon.consuemer.manager.impl.HttpManagerImpl;
 import typhoon.consuemer.pojo.Advertisement;
 import typhoon.consuemer.pojo.Food;
@@ -24,14 +23,15 @@ import typhoon.consuemer.service.AdverstimentService;
 import typhoon.consuemer.service.RestaurantService;
 import typhoon.consuemer.service.impl.AdverstimentServiceImpl;
 import typhoon.consuemer.service.impl.RestaurantServiceImpl;
+import typhoon.consuemer.util.JsonOutUtil;
 
 /**
  * 
+ * @author Carrie
  *update dunn 2018-7-20
  */
 public class ShowRestaurantsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	JsonOutManager jsonManager = new JsonOutManager();
 	RestaurantService rServiceImpl = RestaurantServiceImpl.getInstance();
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -39,7 +39,7 @@ public class ShowRestaurantsServlet extends HttpServlet {
 		int currentPage = Integer.parseInt(req.getParameter("currentPage"));
 		int pageSize = Integer.parseInt(req.getParameter("pageSize"));
 		Page<Restaurant> restaurants = rServiceImpl.getResaurant(currentPage,pageSize);
-		jsonManager.outJson(resp,restaurants);
+		JsonOutUtil.outJson(req,resp,restaurants);
 	}
 
 }

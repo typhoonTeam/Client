@@ -6,56 +6,75 @@
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
     <script src="../node_modules/jquery/dist/jquery.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<<<<<<< HEAD
     <link rel="stylesheet" href="../css/carrie_style.css">
     <style>
-        #ad{
+=======
+    <style>
+        body{
+            background-color: #ff7d52;
+        }
+        .body{
             width: 1000px;
+            height: 1200px;
+            margin: 0px auto;
+            background-color: white;
+        }
+        #header{
+            width: 500px;
+            background-color: gold;
+            border: 3px solid gold;
+
+        }
+>>>>>>> b42136fd6670c8b70aa3ed0af8ef07ca2d8075b2
+        #ad{
+            width: 800px;
             margin: 0px auto;
         }
         #merchant{
             margin: 0px auto;
+<<<<<<< HEAD
             width: 200px;
             height: 240px;
+=======
+            /*background-color: gold;*/
+            width: 200px;
+            height: 240px;
+
+>>>>>>> b42136fd6670c8b70aa3ed0af8ef07ca2d8075b2
         }
         .merchantImg{
             text-align: center;
         }
         .merchantDetail{
-            /*4.22 14:00 修改*/
-            margin-top: 15px;
-            margin-left: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            color: gold;
         }
         .segmentation{
             margin: 0px auto;
             font-size: 20px;
             font-weight: 600;
             text-align: center;
+<<<<<<< HEAD
             color: #ffa23b;
-        }
-        .paging_nav{
-            /*4.22 14:00 新增*/
-            margin-top: 100px;
-            margin-left: 30%;
-        }
-        .shopName{
-            /*4.22 14:00 新增*/
-
-            font-size: 15px;
-            font-weight: 600;
-            color: #0c0b0b;
-        }
-        .slogan{
-            /*4.22 14:00 新增*/
-            font-size: 13px;
-            color: #b4aeb3;
+=======
+            color: gold;
+>>>>>>> b42136fd6670c8b70aa3ed0af8ef07ca2d8075b2
         }
     </style>
 
 </head>
 <body>
+<<<<<<< HEAD
 <div class="carrie_body">
     <br>
     <div id="carrie_header">
+=======
+<div class="body">
+    <br>
+    <div id="header">
+>>>>>>> b42136fd6670c8b70aa3ed0af8ef07ca2d8075b2
         <ul class="nav nav-tabs nav-justified">
             <li class="active"><a href="##">主页</a></li>
             <li><a href="##">登录</a></li>
@@ -67,7 +86,11 @@
     <br>
     <br>
 
+<<<<<<< HEAD
+    <div id="content">
+=======
     <div id="navContent">
+>>>>>>> b42136fd6670c8b70aa3ed0af8ef07ca2d8075b2
         <!-- start advertisement-->
         <div id="ad">
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -80,13 +103,13 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                        <a href="http://www.baidu.com"><img src="../image/ad1.jpg" alt="image1" class="images"></a>
+                        <a href="http://www.baidu.com"><img src="../image/1.jpg" alt="image1" class="images"></a>
                     </div>
                     <div class="item">
-                        <img src="../image/ad2.jpg" alt="image2" class="images">
+                        <img src="../image/2.jpg" alt="image2" class="images">
                     </div>
                     <div class="item">
-                        <img src="../image/ad3.jpg" alt="image3" class="images">
+                        <img src="../image/3.jpg" alt="image3" class="images">
                     </div>
                 </div>
                 <!-- Controls -->
@@ -112,41 +135,78 @@
 
         <div id="merchants">
             <div class="row">
+<<<<<<< HEAD
+               
+=======
 
+>>>>>>> b42136fd6670c8b70aa3ed0af8ef07ca2d8075b2
             </div>
 
         </div>
     </div>
+<<<<<<< HEAD
 
-    <!-- 4.22 14:00 carrie修改-->
-    <div class="paging_nav">
-        <nav aria-label="...">
-            <ul class="pagination" id="navul">
-                <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                <li class="active"><a href="#">1 </a></li>
-            </ul>
-        </nav>
-    </div>
-
+</div>
+</body>
+<script>
+let currentPage = 0;
+let pageSize = 8;
+window.onload=function () {
+    let url="http://localhost:9090/typhoon_consuemer/showRestaurants";
+    let method="POST";
+    let headers=[{"key":"Content-Type","value":"application/json"}];
+    function renderTable(merchants) {
+        let maindiv=document.querySelector("#merchants");
+        for(let i=0;i<merchants.length;i++){
+        	
+            let colDiv='<a href="/typhoon_consuemer/customer/html/merchantFood.html?shop_id='+merchants[i].shopId+'"><div class="col-md-3"><div id="merchant"><br><br> <div class="merchantImg">' +
+                ' <img src="'+merchants[i].picture+'" alt="" width="180" height="100">' +
+                '</div><br><div class="merchantDetail">' +
+                ' &nbsp;&nbsp;'+merchants[i].shopName+'<br> &nbsp;&nbsp;'+merchants[i].slogan+'<br>' +
+                '</div></div></div></a>'
+            $("#merchants").append(colDiv);
+        }
+    }
+    function getData(method,url,data,headers){
+        $.ajax({
+            type: method,
+            url: url,
+            dataType:"json",
+            data: {currentPage:currentPage,
+                pageSize:pageSize},
+            success: function(data){
+                renderTable(data.dataList);
+            }
+        });
+    }
+    getData(method,url,null,headers);
+}
+=======
+    <nav aria-label="...">
+        <ul class="pagination" id="navul">
+            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+            <li class="active"><a href="#">1 </a></li>
+            ...
+        </ul>
+    </nav>
 </div>
 </body>
 <script>
     let currentPage = 0;
     let pageSize = 8;
     window.onload=function () {
-        let url="http://localhost:9090/typhoon_consuemer/showRestaurants";
+        let url="http://localhost:8081/typhoon_consuemer/showRestaurants";
         let method="POST";
         let headers=[{"key":"Content-Type","value":"application/json"}];
         function renderTable(merchants) {
             $("#merchants").empty();
             for(let i=0;i<merchants.length;i++){
 
-                // carrie 4.22 14:00 修改shopName和slogan的格式
                 let colDiv='<a href="/typhoon_consuemer/html/merchantFood.html?shop_id='+merchants[i].shopId+'">' +
                     '<div class="col-md-3"><div id="merchant"><br><br><div class="merchantImg">' +
                     ' <img src="'+merchants[i].picture+'" alt="" width="180" height="100">' +
-                    '</div><div class="merchantDetail">' +'<div class="shopName">'+
-                    merchants[i].shopName+'</div>'+'<div class="slogan">'+merchants[i].slogan+'</div>' +
+                    '</div><br><div class="merchantDetail">' +
+                    ' &nbsp;&nbsp;'+merchants[i].shopName+'<br> &nbsp;&nbsp;'+merchants[i].slogan+'<br>' +
                     '</div></div></div></a>'
                 $("#merchants").append(colDiv);
             }
@@ -207,6 +267,7 @@
             }
         });
     }
+>>>>>>> b42136fd6670c8b70aa3ed0af8ef07ca2d8075b2
 
 </script>
 </html>
