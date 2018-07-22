@@ -23,7 +23,9 @@ public class UserServiceImpl implements UserService{
 
 	public int regist(User user) {
 		// TODO Auto-generated method stub
-		 return userDao.regist(user);
+		int result = userDao.searchUser(user.getUsername());
+		if(result>0) return 0;
+		return userDao.regist(user);
 	}
 
 	public int updateUserInfo(User user) {

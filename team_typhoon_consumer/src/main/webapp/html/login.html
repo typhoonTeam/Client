@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
     <script src="../node_modules/jquery/dist/jquery.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/login.js"></script>
     <style>
         body{
             background-color: #ff7d52;
@@ -80,25 +81,5 @@
 
 </div>
 </body>
-<script>
-    $(function () { 
-        $("#loginForm").on("submit",function (e) {
-            e.preventDefault();
-            let opt =new Object();
-            opt.type="POST";
-            opt.url="/typhoon_consuemer/login";
-            opt.success=function(result){
-                if(result!=0){
-                	window.location.href="/typhoon_consuemer/html/merchant.html";
-                	sessionStorage.setItem('user',$("#userName").val());
-                }else{
-                    $("#error").text("用户名或密码错误！");
-                }
-            }
-            opt.contentType="application/json";
-            opt.data=JSON.stringify({'username':$("#userName").val(),'password':$("#password").val()});
-            $.ajax(opt)
-        })
-    })
-</script>
+
 </html>
