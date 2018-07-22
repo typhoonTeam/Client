@@ -11,21 +11,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import typhoon.consuemer.manager.JsonOutManager;
 import typhoon.consuemer.pojo.User;
 import typhoon.consuemer.service.UserService;
 import typhoon.consuemer.service.impl.UserServiceImpl;
-import typhoon.consuemer.util.JsonOutUtil;
 import typhoon.consuemer.util.JsonParse;
 import typhoon.consuemer.util.JsonParseByJackson;
 import typhoon.consuemer.util.MD5Util;
 /**
  * 
- * @author Carrie
+ * @author Dunn
  *
  */
 public class RegisterServlet extends HttpServlet {
 	private static JsonParse<User> jsonParse = new JsonParseByJackson<>();
 	private static final long serialVersionUID = 1L;
+	JsonOutManager jsonManager = new JsonOutManager();
 	private static UserService userService = UserServiceImpl.getInstance();   
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -55,6 +56,6 @@ public class RegisterServlet extends HttpServlet {
 		user.setUserId(userId);
 		Integer type = userService.regist(user);
 		//返回>0则代表注册成功
-		JsonOutUtil.outJson(request,response,type);
+		jsonManager.outJson(response,type);
 	}
 }

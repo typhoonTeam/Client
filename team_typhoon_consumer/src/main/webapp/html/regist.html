@@ -83,7 +83,7 @@
             opt.url="/typhoon_consuemer/regist";
             opt.success=function(result){
                 if(result!=0){
-                	window.location.href="merchant.html";
+                	window.location.href="/typhoon_consuemer/html/merchant.html";
                 	sessionStorage.setItem('user',$("#username").val());
                 }else{
                     $("#error").text("用户名或密码错误！");

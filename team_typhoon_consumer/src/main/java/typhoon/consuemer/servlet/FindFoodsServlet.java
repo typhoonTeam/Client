@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import typhoon.consuemer.manager.JsonOutManager;
 import typhoon.consuemer.pojo.Food;
 import typhoon.consuemer.pojo.Page;
 import typhoon.consuemer.service.impl.FoodServiceImpl;
-import typhoon.consuemer.util.JsonOutUtil;
 
 /**
  * 
@@ -23,6 +23,7 @@ import typhoon.consuemer.util.JsonOutUtil;
 public class FindFoodsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;   
 	FoodServiceImpl fServiceImpl =  FoodServiceImpl.getInstance();
+	JsonOutManager jsonManager = new JsonOutManager();
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -34,9 +35,9 @@ public class FindFoodsServlet extends HttpServlet {
 			page.setCurrentPage(currentPage);
 			page.setPageSize(pageSize);
 			page.setTotalPage(page.getTotalCount()/pageSize);
-			JsonOutUtil.outJson(request,response,page);
+			jsonManager.outJson(response,page);
 		}else {
-			JsonOutUtil.outJson(request,response,"{}");
+			jsonManager.outJson(response,"{}");
 		}
 	}
 	
