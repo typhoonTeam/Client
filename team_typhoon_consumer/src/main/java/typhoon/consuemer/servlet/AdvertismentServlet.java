@@ -13,12 +13,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import typhoon.consuemer.manager.HttpManager;
+import typhoon.consuemer.manager.JsonOutManager;
 import typhoon.consuemer.manager.impl.HttpManagerImpl;
 import typhoon.consuemer.pojo.Advertisement;
 import typhoon.consuemer.pojo.HttpReq;
 import typhoon.consuemer.service.AdverstimentService;
 import typhoon.consuemer.service.impl.AdverstimentServiceImpl;
-import typhoon.consuemer.util.JsonOutUtil;
 
 /**
  * @author Dunn
@@ -27,6 +27,7 @@ import typhoon.consuemer.util.JsonOutUtil;
 public class AdvertismentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	HttpManager httpManager = new HttpManagerImpl();   
+	JsonOutManager jsonManager = new JsonOutManager();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -42,13 +43,10 @@ public class AdvertismentServlet extends HttpServlet {
 		String results  = httpManager.sendHttpRequest(httpReq);
 		if(results!=null) {
 			List<String> resArr = Arrays.asList(results.split("-"));
-			for(String s :resArr) {
-				System.out.println(s);
-			}
 			if(resArr.size()>0) {
 				List<Advertisement> advertisements = aServiceImpl.getAdvertisement(resArr);
 				//输出json
-				JsonOutUtil.outJson(request,response,advertisements);
+				jsonManager.outJson(response,advertisements);
 			}
 		}
 	}

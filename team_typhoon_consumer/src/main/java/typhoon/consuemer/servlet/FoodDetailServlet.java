@@ -6,9 +6,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import typhoon.consuemer.manager.JsonOutManager;
 import typhoon.consuemer.pojo.Food;
 import typhoon.consuemer.service.impl.FoodServiceImpl;
-import typhoon.consuemer.util.JsonOutUtil;
 
 /**
  * 
@@ -17,16 +17,16 @@ import typhoon.consuemer.util.JsonOutUtil;
  */
 public class FoodDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+	JsonOutManager jsonManager = new JsonOutManager();
 	FoodServiceImpl foodServiceImpl = FoodServiceImpl.getInstance();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 String foodId = (String)request.getParameter("food_id");
 		 if(foodId!=null) {
 			 Food food = foodServiceImpl.getFoodInfoByFoodId(foodId);
-			 JsonOutUtil.outJson(request,response,food);
+			 jsonManager.outJson(response,food);
 		 }else {
-			 JsonOutUtil.outJson(request,response,"");
+			 jsonManager.outJson(response,"");
 		 }
 	}
 
