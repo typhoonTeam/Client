@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
     <script src="../node_modules/jquery/dist/jquery.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="../css/carrie_style.css">
+     <script src="../js/merchant.js"></script>
     <style>
         #ad{
             width: 1000px;
@@ -72,22 +72,12 @@
         <div id="ad">
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                <ol class="carousel-indicators" id="olnum">
+
                 </ol>
                 <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <a href="http://www.baidu.com"><img src="../image/ad1.jpg" alt="image1" class="images"></a>
-                    </div>
-                    <div class="item">
-                        <img src="../image/ad2.jpg" alt="image2" class="images">
-                    </div>
-                    <div class="item">
-                        <img src="../image/ad3.jpg" alt="image3" class="images">
-                    </div>
+                <div class="carousel-inner" role="listbox" id="adver">
+
                 </div>
                 <!-- Controls -->
                 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -130,83 +120,6 @@
 
 </div>
 </body>
-<script>
-    let currentPage = 0;
-    let pageSize = 8;
-    window.onload=function () {
-        let url="http://localhost:9090/typhoon_consuemer/showRestaurants";
-        let method="POST";
-        let headers=[{"key":"Content-Type","value":"application/json"}];
-        function renderTable(merchants) {
-            $("#merchants").empty();
-            for(let i=0;i<merchants.length;i++){
 
                 // carrie 4.22 14:00 修改shopName和slogan的格式
-                let colDiv='<a href="/typhoon_consuemer/html/merchantFood.html?shop_id='+merchants[i].shopId+'">' +
-                    '<div class="col-md-3"><div id="merchant"><br><br><div class="merchantImg">' +
-                    ' <img src="'+merchants[i].picture+'" alt="" width="180" height="100">' +
-                    '</div><div class="merchantDetail">' +'<div class="shopName">'+
-                    merchants[i].shopName+'</div>'+'<div class="slogan">'+merchants[i].slogan+'</div>' +
-                    '</div></div></div></a>'
-                $("#merchants").append(colDiv);
-            }
-        }
-        function renderNav(page){
-            $("#navul").empty();
-            //上一页按钮
-            let firstLi = ' <li><a href="#" aria-label="Previous" id="preNav"><span aria-hidden="true">&laquo;</span></a></li>';
-            $("#navul").append(firstLi);
-            for(let i=0;i<page.totalPage;i++){
-                let status = '';
-                if(page.currentPage==i){
-                    status = 'active';
-                }
-                let navHtml = '<li class="'+status+'"><a href="#" id="page'+i+'">'+(i+1)+'<span class="sr-only">(current)</span></a></li>';
-                $("#navul").append(navHtml);
-            //绑定事件
-                $("#page"+i).on('click',function () {
-                    currentPage = i;
-                    getData(method,url,null,headers);
-                });
-            }
-            //下一页按钮
-            let nextLi = '<li><a href="#" aria-label="Next" id="nextNav"><span aria-hidden="true">»</span></a></li>';
-            $("#navul").append(nextLi);
-            //为上下页绑定事件
-            $("#nextNav").on('click',function () {
-                currentPage = currentPage+1;
-                getData(method,url,null,headers);
-            });
-            $("#preNav").on('click',function () {
-                if(currentPage>0){currentPage = currentPage-1;}
-                getData(method,url,null,headers);
-            });
-        }
-
-        function getData(method,url,data,headers){
-            $.ajax({
-                type: method,
-                url: url,
-                dataType:"json",
-                data: {currentPage:currentPage,
-                    pageSize:pageSize},
-                success: function(data){
-                    renderTable(data.dataList);
-                    renderNav(data);
-                }
-            });
-        }
-        getData(method,url,null,headers);
-
-        $.ajax({
-            type: "GET",
-            url: "/typhoon_consuemer/getAdvertisement",
-            dataType: "json",
-            success: function(data){
-                console.log(data);
-            }
-        });
-    }
-
-</script>
 </html>

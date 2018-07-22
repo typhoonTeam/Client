@@ -64,6 +64,27 @@ public class UserDaoImpl implements UserDao {
 		return 0;
 	}
 
+	@Override
+	public int searchUser(String username) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT Count(1) FROM CONSUMER WHERE USERNAME=? ";
+		conn = DBUtil.getConnection();
+		PreparedStatement pst = null;
+		ResultSet rs= null;
+		int result = 0;
+		 try {
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, username);
+			rs = pst.executeQuery();
+			rs.next();
+			result = rs.getInt(1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 
 
 }
