@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/carrie_style.css">
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/util.js"></script>
+    <script src="../js/cartService.js"></script>
+     <script src="../js/order.js"></script>
+    <style>
+        body{
+            background-color: #ff7d52;
+        }
+        .shopName{
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .totalPrice{
+            position: absolute;
+            right: 25px;
+            height: 25px;
+            line-height: 5px;
+        }
+        .order{
+            position: relative;
+        }
+        .tp{
+            color: #404040;
+            font-family: Arial,Verdana;
+            font-weight: 700;
+            margin-right: 5px;
+            color: #f40;
+            font-size: 15px;
+        }
+        .order{
+
+        }
+    </style>
+
+
+</head>
+<body>
+<div class="carrie_body">
+
+    <br>
+    <div id="carrie_header">
+        <ul class="nav nav-tabs nav-justified">
+            <li><a href="##">主页</a></li>
+            <li><a href="##">登录</a></li>
+            <li><a href="##">购物车</a></li>
+            <li class="active"><a href="##">订单</a></li>
+            <li><a href="##">我的</a></li>
+        </ul>
+    </div>
+    <br>
+    <br>
+    <!-- order order list -->
+    <div class="orderList">
+        <div class="order">
+            <div class="shopName">店名：沙拉店</div>
+            <div class="foods">
+                <table class="table table-hover table-bordered orderTalbe" id="fishDish">
+                    <tr>
+                    </tr>
+                </table>
+            </div>
+            <div class="totalPrice">
+                <div class="tp" >
+                	<h3 id="total"></h3>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- order order list -->
+
+</div>
+</body>
+</html>

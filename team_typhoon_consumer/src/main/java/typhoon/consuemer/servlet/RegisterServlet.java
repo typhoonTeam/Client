@@ -11,21 +11,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import typhoon.consuemer.util.JsonOutUtil;
 import typhoon.consuemer.pojo.User;
 import typhoon.consuemer.service.UserService;
 import typhoon.consuemer.service.impl.UserServiceImpl;
-import typhoon.consuemer.util.JsonOutUtil;
 import typhoon.consuemer.util.JsonParse;
 import typhoon.consuemer.util.JsonParseByJackson;
 import typhoon.consuemer.util.MD5Util;
 /**
  * 
- * @author Carrie
+ * @author Dunn
  *
  */
 public class RegisterServlet extends HttpServlet {
 	private static JsonParse<User> jsonParse = new JsonParseByJackson<>();
 	private static final long serialVersionUID = 1L;
+	JsonOutUtil jsonManager = new JsonOutUtil();
 	private static UserService userService = UserServiceImpl.getInstance();   
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -51,10 +52,14 @@ public class RegisterServlet extends HttpServlet {
 		BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
 		String temp = br.readLine();
 		User user = jsonParse.parseJsonToObject(User.class, temp);
+		user.setPassword(MD5Util.md5Password(user.getPassword()));
+		System.out.println(user.getPassword());
 		String userId = UUID.randomUUID().toString();
+		//若传过来的id为null则返回失败
+		if(user.getPassword().equals("")||user.getPassword()==null||user.getUsername()==null||user.getUsername().equals("")) {jsonManager.outJson(response,new Integer(0));};
 		user.setUserId(userId);
 		Integer type = userService.regist(user);
 		//返回>0则代表注册成功
-		JsonOutUtil.outJson(request,response,type);
+		jsonManager.outJson(response,type);
 	}
 }

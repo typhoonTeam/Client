@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+     <script src="../js/merchant.js"></script>
+    <style>
+        body{
+            background-color: #ff7d52;
+        }
+        .body{
+            width: 1000px;
+            height: 1200px;
+            margin: 0px auto;
+            background-color: white;
+        }
+        #header{
+            width: 500px;
+            background-color: gold;
+            border: 3px solid gold;
+
+        }
+        #ad{
+            width: 800px;
+            margin: 0px auto;
+        }
+        #merchant{
+            margin: 0px auto;
+            /*background-color: gold;*/
+            width: 200px;
+            height: 240px;
+
+        }
+        .merchantImg{
+            text-align: center;
+        }
+        .merchantDetail{
+            font-size: 15px;
+            font-weight: 600;
+            color: gold;
+        }
+        .segmentation{
+            margin: 0px auto;
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+            color: gold;
+        }
+        .page{
+            display: inline;
+        }
+        .list{
+            display: inline;
+        }
+        nav{
+            display: inline;
+        }
+    </style>
+
+</head>
+<body>
+<div class="body">
+    <br>
+    <div id="header">
+        <ul class="nav nav-tabs nav-justified">
+            <li class="active"><a href="##">主页</a></li>
+            <li><a href="##">登录</a></li>
+            <li><a href="##">购物车</a></li>
+            <li><a href="##">订单</a></li>
+            <li><a href="##">我的</a></li>
+        </ul>
+    </div>
+    <br>
+    <br>
+
+    <div id="navContent">
+        <!-- start advertisement-->
+        <div id="ad">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators" id="olnum">
+
+                </ol>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox" id="adver">
+
+                </div>
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <!-- end advertisement-->
+
+        <br>
+        <br>
+        <br>
+        <div class="segmentation">
+            ************商家列表************
+        </div>
+        <br>
+
+        <div id="merchants">
+            <div class="row">
+
+            </div>
+
+        </div>
+    </div>
+    <nav aria-label="...">
+        <ul class="pagination" id="navul">
+            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+            <li class="active"><a href="#">1 </a></li>
+            ...
+        </ul>
+    </nav>
+</div>
+</body>
+
+</html>

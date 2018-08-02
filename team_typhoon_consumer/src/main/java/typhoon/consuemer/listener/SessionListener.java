@@ -14,7 +14,7 @@ import typhoon.consuemer.pojo.ApplicationConstants;
  * Application Lifecycle Listener implementation class SessionListener
  *@author dunn 2018-7-14
  */
-public class SessionListener implements HttpSessionAttributeListener, HttpSessionListener {
+public class SessionListener implements  HttpSessionListener {
 
 	/**
 	 * Default constructor. 
@@ -28,11 +28,11 @@ public class SessionListener implements HttpSessionAttributeListener, HttpSessio
 	 */
 	public void sessionCreated(HttpSessionEvent se)  { 
 		HttpSession session = se.getSession();
-		// Ìí¼Óµ½map
+		// ï¿½ï¿½Óµï¿½map
 		ApplicationConstants.SESSION_MAP.put(session.getId(), session);
-		// ·ÃÎÊ×ÜÈËÊý++
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½++
 		ApplicationConstants.TOTAL_HISTORY_COUNT++;
-		// Èç¹ûmap×ÜÊý´óÓÚ×î¸ßÍ¬Ê±ÔÚÏßÈËÊýÔò¸üÐÂ×î¸ßÔÚÏßÈËÊý¼°Ê±¼ä
+		// ï¿½ï¿½ï¿½mapï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 		if (ApplicationConstants.MAX_ONLINE_COUNT < ApplicationConstants.SESSION_MAP.size()) {
 			ApplicationConstants.MAX_ONLINE_COUNT = ApplicationConstants.SESSION_MAP.size();
 			ApplicationConstants.MAX_ONLINE_COUNT_DATE = new Date();
@@ -43,61 +43,10 @@ public class SessionListener implements HttpSessionAttributeListener, HttpSessio
 	 * @see HttpSessionListener#sessionDestroyed(HttpSessionEvent)
 	 */
 	public void sessionDestroyed(HttpSessionEvent se)  { 
-		// »ñÈ¡¼´½«±»Ïú»ÙµÄsession
+		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ùµï¿½session
 		HttpSession session = se.getSession();
-		// ÔÚmapÖÐ¸ù¾ÝkeyÒÆ³ý
+		// ï¿½ï¿½mapï¿½Ð¸ï¿½ï¿½ï¿½keyï¿½Æ³ï¿½
 		ApplicationConstants.SESSION_MAP.remove(session.getId());
-	}
-
-	/**
-	 * @see HttpSessionAttributeListener#attributeAdded(HttpSessionBindingEvent)
-	 */
-	public void attributeAdded(HttpSessionBindingEvent se)  { 
-		// ÅÐ¶ÏÊÇ·ñÌí¼ÓµÄÓÃ»§µÇÂ¼ÐÅÏ¢session
-		if (se.getName().equals(ApplicationConstants.LOGIN_SESSION_NAME)) {
-			// µ±Ç°µÇÂ¼ÓÃ»§Êý++
-			ApplicationConstants.CURRENT_LOGIN_COUNT++;
-			// ÊÇ·ñÔÚÆäËû»úÆ÷µÇÂ¼´¦Àí
-			isLoginInOtherPlace(se);
-		}
-	}
-
-	/**
-	 * @see HttpSessionAttributeListener#attributeRemoved(HttpSessionBindingEvent)
-	 */
-	public void attributeRemoved(HttpSessionBindingEvent se)  { 
-		// ÅÐ¶ÏÊÇ·ñÒÆ³ýµÄÓÃ»§µÇÂ¼ÐÅÏ¢session
-		if (se.getName().equals(ApplicationConstants.LOGIN_SESSION_NAME)) {
-			// µ±Ç°µÇÂ¼ÓÃ»§Êý--
-			ApplicationConstants.CURRENT_LOGIN_COUNT--;
-			// ÊÇ·ñÔÚÆäËû»úÆ÷µÇÂ¼´¦Àí
-			isLoginInOtherPlace(se);
-		}
-	}
-
-	/**
-	 * @see HttpSessionAttributeListener#attributeReplaced(HttpSessionBindingEvent)
-	 */
-	public void attributeReplaced(HttpSessionBindingEvent se)  { 
-		// ÅÐ¶ÏÊÇ·ñÐÞ¸ÄµÄÓÃ»§µÇÂ¼ÐÅÏ¢session
-		if (se.getName().equals(ApplicationConstants.LOGIN_SESSION_NAME)) {
-			// ÊÇ·ñÔÚÆäËû»úÆ÷µÇÂ¼´¦Àí
-			isLoginInOtherPlace(se);
-		}
-	}
-	private void isLoginInOtherPlace(HttpSessionBindingEvent event) {
-		// »ñÈ¡Ìí¼ÓµÄsession
-		HttpSession session = event.getSession();
-		// ±éÀú²éÕÒ´ËÓÃ»§ÊÇ·ñµÇÂ¼
-		for (HttpSession s : ApplicationConstants.SESSION_MAP.values()) {
-			// Èç¹ûÒÑ¾­ÔÚÆäËû»úÆ÷µÇÂ¼ÔòÊ¹ÆäÊ§Ð§
-			if (event.getValue().equals(s.getAttribute(ApplicationConstants.LOGIN_SESSION_NAME))
-					&& session.getId() != s.getId()) {
-				// Ê¹sessionÊ§Ð§
-				session.invalidate();
-				break;
-			}
-		}
 	}
 
 }

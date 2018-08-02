@@ -2,17 +2,17 @@ package typhoon.consuemer.util;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import typhoon.consuemer.util.JsonParse;
+import typhoon.consuemer.util.JsonParseByJackson;
+
 import java.io.IOException;
 import java.io.PrintWriter;
-/**
- * @author Dunn
- * 将json数据输出到浏览器
- */
 
 public class JsonOutUtil {
-    private static JsonParse json = new JsonParseByJackson();
-    public static void outJson(HttpServletRequest request, HttpServletResponse response, Object object){
-        response.setContentType("application/json;charset=UTF-8");
+    private  JsonParse json = new JsonParseByJackson();
+    public  void outJson(HttpServletResponse response, Object object){
+        response.setContentType("text/html;charset=UTF-8");
         //禁用缓存，确保网页信息是最新数据
         response.setHeader("Pragma","No-cache");
         response.setHeader("Cache-Control","no-cache");

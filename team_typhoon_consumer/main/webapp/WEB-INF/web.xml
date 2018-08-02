@@ -1,0 +1,92 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+	<listener>
+		<listener-class>typhoon.consuemer.listener.SessionListener</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<display-name>LoginServlet</display-name>
+		<description></description>
+		<servlet-class>typhoon.consuemer.servlet.LoginServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ShowRestaurantsServlet</servlet-name>
+		<display-name>ShowRestaurantsServlet</display-name>
+		<description></description>
+		<servlet-class>typhoon.consuemer.servlet.ShowRestaurantsServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>RegisterServlet</servlet-name>
+		<display-name>RegisterServlet</display-name>
+		<description></description>
+		<servlet-class>typhoon.consuemer.servlet.RegisterServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>FindFoodsServlet</servlet-name>
+		<display-name>FindFoodsServlet</display-name>
+		<description></description>
+		<servlet-class>typhoon.consuemer.servlet.FindFoodsServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>RestaurantDetailServlet</servlet-name>
+		<display-name>RestaurantDetailServlet</display-name>
+		<description></description>
+		<servlet-class>typhoon.consuemer.servlet.RestaurantDetailServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>FoodDetailServlet</servlet-name>
+		<display-name>FoodDetailServlet</display-name>
+		<description></description>
+		<servlet-class>typhoon.consuemer.servlet.FoodDetailServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>FileUpload</servlet-name>
+		<display-name>FileUpload</display-name>
+		<description></description>
+		<servlet-class>typhoon.consuemer.servlet.FileUploaddd</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AdvertismentServlet</servlet-name>
+		<display-name>AdvertismentServlet</display-name>
+		<description></description>
+		<servlet-class>typhoon.consuemer.servlet.AdvertismentServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ShowRestaurantsServlet</servlet-name>
+		<url-pattern>/showRestaurants</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>RegisterServlet</servlet-name>
+		<url-pattern>/regist</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FindFoodsServlet</servlet-name>
+		<url-pattern>/findDishes</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RestaurantDetailServlet</servlet-name>
+		<url-pattern>/showRestaurantDetail</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FoodDetailServlet</servlet-name>
+		<url-pattern>/showDishDetail</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FileUpload</servlet-name>
+		<url-pattern>/FileUpload</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AdvertismentServlet</servlet-name>
+		<url-pattern>/getAdvertisement</url-pattern>
+	</servlet-mapping>
+</web-app>
